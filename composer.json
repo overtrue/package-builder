@@ -1,0 +1,26 @@
+{
+    "name": "overtrue/package-builder",
+    "description": "A composer package builder.",
+    "keywords": ["composer", "packages", "php"],
+    "autoload": {
+        "psr-4": {
+            "Overtrue\\PackageBuilder\\": "src"
+        }
+    },
+    "require": {
+        "symfony/console": "^2.7",
+        "symfony/process": "^2.7",
+        "symfony/filesystem": "^2.7"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^4.8"
+    },
+    "bin": ["bin/package-builder"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "安正超",
+            "email": "zhengchao3@staff.weibo.com"
+        }
+    ]
+}
