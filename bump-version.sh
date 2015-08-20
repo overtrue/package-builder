@@ -13,7 +13,6 @@ fi
 
 TAG=$1
 
-
 #
 # Tag & build master branch
 #
@@ -56,12 +55,13 @@ git add manifest.json
 
 git commit -m "Bump version ${TAG}"
 git push
+git push ${TAG}
 
 #
 # Go back to master
 #
 git checkout master
 
-echo "New version created. Now you should run:"
-echo "git push origin gh-pages"
-echo "git push ${TAG}"
+# echo "New version created. Now you should run:"
+# echo "git push origin gh-pages"
+# echo "git push ${TAG}"
