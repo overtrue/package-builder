@@ -27,6 +27,8 @@ box build
 git checkout gh-pages
 
 cp ${PHAR_NAME}.phar downloads/${PHAR_NAME}-${TAG}.phar
+cp ${PHAR_NAME}.phar downloads/${PHAR_NAME}.phar
+
 git add downloads/${PHAR_NAME}-${TAG}.phar
 
 SHA1=$(openssl sha1 ${PHAR_NAME}.phar | cut -d " " -f2)
