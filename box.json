@@ -11,6 +11,11 @@
             "name": "*.php",
             "exclude": ["Tests"],
             "in": "vendor"
+        },
+        {
+            "name": "*.json",
+            "exclude": ["Tests"],
+            "in": "vendor"
         }
     ],
     "git-version": "package_version",
