@@ -1,6 +1,6 @@
 #!/usr/bin/php
 <?php
-use Overtrue\PackageBuilder\Application\Application;
+use Overtrue\PackageBuilder\Application;
 if (file_exists(dirname(dirname(__FILE__)).'/vendor/autoload.php')) {
     require_once dirname(dirname(__FILE__)).'/vendor/autoload.php';
 } else if (file_exists(dirname(__FILE__).'/../../../vendor/autoload.php')) {
@@ -9,5 +9,5 @@ if (file_exists(dirname(dirname(__FILE__)).'/vendor/autoload.php')) {
     throw new Exception('Can not load composer autoloader; Try running "composer install".');
 }
 
-$builder = new Application();
+$builder = new Application('Package Builder', '@package_version@');
 $builder->run();

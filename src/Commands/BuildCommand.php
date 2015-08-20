@@ -1,21 +1,14 @@
 <?php
 
-namespace Overtrue\PackageBuilder\Application;
+namespace Overtrue\PackageBuilder\Commands;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\Question;
 use Symfony\Component\Console\Question\ConfirmationQuestion;
 use Symfony\Component\Filesystem\Filesystem;
-use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
-use Symfony\Component\Process\Process;
-
-use Phar;
-use PharData;
-use Exception;
 
 class BuildCommand extends Command
 {
@@ -38,7 +31,7 @@ class BuildCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $this->fs = new Filesystem();
-        $this->stubsDirectory = __DIR__ . '/../../stubs/';
+        $this->stubsDirectory = __DIR__.'/../stubs/';
 
         $directory = $input->getArgument('directory');
 
@@ -49,10 +42,10 @@ class BuildCommand extends Command
         $helper = $this->getHelper('question');
 
         $config = array(
-                    'name'            => 'Package Name',
-                    'namespace'       => '',
-                    'phpunit'         => true,
-                    'phpcs'           => true,
+                    'name' => 'Package Name',
+                    'namespace' => '',
+                    'phpunit' => true,
+                    'phpcs' => true,
                     'phpcs_standards' => 'symfony',
                   );
 
@@ -72,7 +65,7 @@ class BuildCommand extends Command
 
         $config['name'] = $helper->ask($input, $output, $question);
 
-        $defaultNamespace = join('\\', array_map('ucfirst', explode('/', $config['name'])));
+        $defaultNamespace = implode('\\', array_map('ucfirst', explode('/', $config['name'])));
 
         $question = new Question("Please enter the namespace of the package [<fg=yellow>{$defaultNamespace}</fg=yellow>]: ", $defaultNamespace);
         $config['namespace'] = $helper->ask($input, $output, $question);
@@ -87,7 +80,7 @@ class BuildCommand extends Command
             $config['phpcs_standards'] = $helper->ask($input, $output, $question);
         }
 
-        $this->packageDirectory = realpath($directory) . '/' . str_replace(['/'], '-', $config['name']);
+        $this->packageDirectory = realpath($directory).'/'.str_replace(['/'], '-', $config['name']);
 
         $this->createPackage($config);
 
@@ -104,13 +97,13 @@ class BuildCommand extends Command
     /**
      * Create package directory and base files.
      *
-     * @param array      $config
+     * @param array $config
      *
      * @return string
      */
     protected function createPackage(array $config)
     {
-        $this->fs->mkdir($this->packageDirectory. '/src/', 0755);
+        $this->fs->mkdir($this->packageDirectory.'/src/', 0755);
         $this->createReadme($config['name']);
         $this->fs->touch($this->packageDirectory.'/src/.gitkeep');
         $this->copyFile('.gitattributes');
@@ -121,11 +114,9 @@ class BuildCommand extends Command
     }
 
     /**
-     * Create README.md
+     * Create README.md.
      *
      * @param string $name
-     *
-     * @return void
      */
     protected function createReadme($name)
     {
@@ -147,9 +138,7 @@ README;
     /**
      * Create PHPUnit files.
      *
-     * @param array  $config
-     *
-     * @return void
+     * @param array $config
      */
     protected function copyPHPUnitFile($config)
     {
@@ -162,8 +151,6 @@ README;
      * Create PHP-CS-fixer.
      *
      * @param array $config
-     *
-     * @return void
      */
     protected function createCSFixerConfiguration($config)
     {
@@ -171,19 +158,17 @@ README;
 
         $template = file_get_contents($this->stubsDirectory.'/.php_cs');
 
-        $content = str_replace('STANDARDS', var_export((array)$config['phpcs_standards'], true), $template);
+        $content = str_replace('STANDARDS', var_export((array) $config['phpcs_standards'], true), $template);
 
         $this->fs->dumpFile($this->packageDirectory.'/.php_cs', $content);
     }
 
     /**
      * Init composer.
-     *
-     * @return void
      */
     protected function initComposer($config)
     {
-        exec ("composer init --name {$config['name']} --working-dir {$this->packageDirectory}");
+        exec("composer init --name {$config['name']} --working-dir {$this->packageDirectory}");
     }
 
     /**
@@ -191,12 +176,10 @@ README;
      *
      * @param string $file
      * @param string $directory
-     *
-     * @return void
      */
     protected function copyFile($file, $filename = '')
     {
-        $target = $this->packageDirectory .'/'. ($filename ?: $file);
+        $target = $this->packageDirectory.'/'.($filename ?: $file);
 
         $this->fs->copy($this->stubsDirectory.$file, $target, true);
     }
