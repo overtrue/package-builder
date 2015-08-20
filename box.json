@@ -4,16 +4,12 @@
         "src"
     ],
     "files": [
-        "LICENSE"
+        "LICENSE",
+        "vendor/herrera-io/phar-update/res/schema.json"
     ],
     "finder": [
         {
             "name": "*.php",
-            "exclude": ["Tests"],
-            "in": "vendor"
-        },
-        {
-            "name": "*.json",
             "exclude": ["Tests"],
             "in": "vendor"
         }
