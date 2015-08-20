@@ -54,8 +54,7 @@ mv manifest.json.tmp manifest.json
 git add manifest.json
 
 git commit -m "Bump version ${TAG}"
-git push
-git push ${TAG}
+git push --tag
 
 #
 # Go back to master
