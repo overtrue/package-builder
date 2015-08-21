@@ -106,9 +106,9 @@ class BuildCommand extends Command
         $this->fs->mkdir($this->packageDirectory.'/src/', 0755);
         $this->createReadme($config['name']);
         $this->fs->touch($this->packageDirectory.'/src/.gitkeep');
-        $this->copyFile('.gitattributes');
-        $this->copyFile('.gitignore');
-        $this->copyFile('.editorconfig');
+        $this->copyFile('gitattributes', '.gitattributes');
+        $this->copyFile('gitignore', '.gitignore');
+        $this->copyFile('editorconfig', '.editorconfig');
 
         return $this->packageDirectory;
     }
@@ -154,8 +154,6 @@ README;
      */
     protected function createCSFixerConfiguration($config)
     {
-        $this->copyFile('.php_cs');
-
         $template = file_get_contents($this->stubsDirectory.'/.php_cs');
 
         $content = str_replace('STANDARDS', var_export((array) $config['phpcs_standards'], true), $template);
