@@ -69,10 +69,10 @@ class BuildCommand extends Command
 
         $question = new Question("Please enter the namespace of the package [<fg=yellow>{$defaultNamespace}</fg=yellow>]: ", $defaultNamespace);
         $config['namespace'] = $helper->ask($input, $output, $question);
-        $question = new ConfirmationQuestion('Do you want to test this package ?[<fg=yellow>Y/n</fg=yellow>]:', yes);
+        $question = new ConfirmationQuestion('Do you want to test this package ?[<fg=yellow>Y/n</fg=yellow>]:', 'yes');
         $config['phpunit'] = $helper->ask($input, $output, $question);
 
-        $question = new ConfirmationQuestion('Do you want to use php-cs-fixer format you code ? [<fg=yellow>Y/n</fg=yellow>]:', yes);
+        $question = new ConfirmationQuestion('Do you want to use php-cs-fixer format you code ? [<fg=yellow>Y/n</fg=yellow>]:', 'yes');
         $config['phpcs'] = $helper->ask($input, $output, $question);
 
         if ($config['phpcs']) {
