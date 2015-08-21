@@ -17,7 +17,7 @@ TAG=$1
 # Tag & build master branch
 #
 git checkout master
-git tag ${TAG}
+
 box build
 
 #
@@ -60,6 +60,7 @@ git push --tag
 # Go back to master
 #
 git checkout master
+git tag ${TAG}
 
 # echo "New version created. Now you should run:"
 # echo "git push origin gh-pages"
