@@ -16,7 +16,7 @@ class UpdateCommand extends Command
     {
         $this
             ->setName('update')
-            ->setDescription('Updates cliph.phar to the latest version')
+            ->setDescription('Updates package-builder.phar to the latest version')
         ;
     }
 
