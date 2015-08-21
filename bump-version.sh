@@ -54,7 +54,6 @@ mv manifest.json.tmp manifest.json
 git add manifest.json
 
 git commit -m "Bump version ${TAG}"
-git push --tag
 
 #
 # Go back to master
@@ -62,6 +61,7 @@ git push --tag
 git checkout master
 git tag ${TAG}
 
+git push --tag
 # echo "New version created. Now you should run:"
 # echo "git push origin gh-pages"
 # echo "git push ${TAG}"
