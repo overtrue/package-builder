@@ -154,7 +154,7 @@ README;
      */
     protected function createCSFixerConfiguration($config)
     {
-        $template = file_get_contents($this->stubsDirectory.'/.php_cs');
+        $template = file_get_contents($this->stubsDirectory.'/php_cs');
 
         $content = str_replace('STANDARDS', var_export((array) $config['phpcs_standards'], true), $template);
 

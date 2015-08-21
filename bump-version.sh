@@ -63,6 +63,7 @@ git checkout master
 git tag ${TAG}
 
 git push --tag
+rm -rf ${PHAR_NAME}.phar
 # echo "New version created. Now you should run:"
 # echo "git push origin gh-pages"
 # echo "git push ${TAG}"
