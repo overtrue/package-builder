@@ -54,6 +54,7 @@ mv manifest.json.tmp manifest.json
 git add manifest.json
 
 git commit -m "Bump version ${TAG}"
+git push origin gh-pages -f
 
 #
 # Go back to master
