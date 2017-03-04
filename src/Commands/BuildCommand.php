@@ -33,11 +33,7 @@ class BuildCommand extends Command
         $this->fs = new Filesystem();
         $this->stubsDirectory = __DIR__.'/../stubs/';
 
-        $directory = $input->getArgument('directory');
-
-        if (empty($directory)) {
-            $directory = '.';
-        }
+        $directory = "./".$input->getArgument('directory');
 
         $helper = $this->getHelper('question');
 
@@ -80,7 +76,7 @@ class BuildCommand extends Command
             $config['phpcs_standards'] = $helper->ask($input, $output, $question);
         }
 
-        $this->packageDirectory = realpath($directory).'/'.str_replace(['/'], '-', $config['name']);
+        $this->packageDirectory = str_replace(['/'], '-', $config['name']);
 
         $this->createPackage($config);
 
