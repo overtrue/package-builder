@@ -1,4 +1,8 @@
 #!/bin/bash
+#
+# Require jsawk: brew install jsawk
+#
+# Usage: ./bump-version.sh 0.0.2
 
 PHAR_NAME=package-builder
 GITHUB_USERNAME=overtrue
