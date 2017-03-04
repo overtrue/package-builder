@@ -144,7 +144,7 @@ README;
     {
         $this->fs->mkdir($this->packageDirectory.'/tests');
         $this->fs->touch($this->packageDirectory.'/tests/.gitkeep');
-        $this->copyFile('phpunit.xml.dist');
+        $this->copyFile('phpunit_config', 'phpunit.xml.dist');
     }
 
     /**
