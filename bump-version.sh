@@ -7,6 +7,11 @@
 PHAR_NAME=package-builder
 GITHUB_USERNAME=overtrue
 #----------------------------
+# install box
+if [[ ! -f box.phar ]]; then
+    echo "Installing box..."
+    curl -LSs https://box-project.github.io/box2/installer.php | php
+fi
 
 set -e
 
@@ -22,7 +27,7 @@ TAG=$1
 #
 git checkout master
 
-box build
+./box.phar build
 
 #
 # Copy executable file into GH pages
@@ -68,6 +73,7 @@ git tag ${TAG}
 
 git push --tag
 rm -rf ${PHAR_NAME}.phar
+rm -rf box.phar
 # echo "New version created. Now you should run:"
 # echo "git push origin gh-pages"
 # echo "git push ${TAG}"
