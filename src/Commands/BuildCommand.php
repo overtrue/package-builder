@@ -1,21 +1,49 @@
 <?php
 
+/*
+ * This file is part of the overtrue/package-builder.
+ *
+ * (c) overtrue <i@overtrue.me>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
+ */
+
 namespace Overtrue\PackageBuilder\Commands;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Question\Question;
 use Symfony\Component\Console\Question\ConfirmationQuestion;
+use Symfony\Component\Console\Question\Question;
 use Symfony\Component\Filesystem\Filesystem;
 
+/**
+ * Class BuildCommand.
+ *
+ * @author overtrue <i@overtrue.me>
+ */
 class BuildCommand extends Command
 {
+    /**
+     * @var string
+     */
     protected $stubsDirectory;
+
+    /**
+     * @var string
+     */
     protected $packageDirectory;
+
+    /**
+     * @var \Symfony\Component\Filesystem\Filesystem
+     */
     protected $fs;
 
+    /**
+     * {@inheritdoc}
+     */
     protected function configure()
     {
         $this
@@ -28,22 +56,23 @@ class BuildCommand extends Command
             );
     }
 
+    /**
+     * {@inheritdoc}
+     */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $this->fs = new Filesystem();
         $this->stubsDirectory = __DIR__.'/../stubs/';
 
-        $directory = "./".$input->getArgument('directory');
-
         $helper = $this->getHelper('question');
 
-        $config = array(
+        $config = [
                     'name' => 'Package Name',
                     'namespace' => '',
                     'phpunit' => true,
                     'phpcs' => true,
                     'phpcs_standards' => 'symfony',
-                  );
+                  ];
 
         $question = new Question('Please enter the name of the package (example: foo/bar): ');
         $question->setValidator(function ($value) {
@@ -65,6 +94,7 @@ class BuildCommand extends Command
 
         $question = new Question("Please enter the namespace of the package [<fg=yellow>{$defaultNamespace}</fg=yellow>]: ", $defaultNamespace);
         $config['namespace'] = $helper->ask($input, $output, $question);
+
         $question = new ConfirmationQuestion('Do you want to test this package ?[<fg=yellow>Y/n</fg=yellow>]:', 'yes');
         $config['phpunit'] = $helper->ask($input, $output, $question);
 
@@ -76,7 +106,8 @@ class BuildCommand extends Command
             $config['phpcs_standards'] = $helper->ask($input, $output, $question);
         }
 
-        $this->packageDirectory = str_replace(['/'], '-', $config['name']);
+        $directory = './'.$input->getArgument('directory');
+        $this->packageDirectory = $directory.str_replace(['/'], '-', $config['name']);
 
         $this->createPackage($config);
 
@@ -120,9 +151,17 @@ class BuildCommand extends Command
         $readme = <<<README
 # $name
 
-# Usage
+...
 
-# License
+## Installing
+
+...
+
+## Usage
+
+...
+
+## License
 
 MIT
 
@@ -133,10 +172,8 @@ README;
 
     /**
      * Create PHPUnit files.
-     *
-     * @param array $config
      */
-    protected function copyPHPUnitFile($config)
+    protected function copyPHPUnitFile()
     {
         $this->fs->mkdir($this->packageDirectory.'/tests');
         $this->fs->touch($this->packageDirectory.'/tests/.gitkeep');
@@ -159,6 +196,8 @@ README;
 
     /**
      * Init composer.
+     *
+     * @param array $config
      */
     protected function initComposer($config)
     {
@@ -166,10 +205,12 @@ README;
     }
 
     /**
-     * Copry file.
+     * Copy file.
      *
      * @param string $file
-     * @param string $directory
+     * @param string $filename
+     *
+     * @internal param string $directory
      */
     protected function copyFile($file, $filename = '')
     {

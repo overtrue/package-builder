@@ -1,22 +1,37 @@
 <?php
 
+/*
+ * This file is part of the overtrue/package-builder.
+ *
+ * (c) overtrue <i@overtrue.me>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
+ */
+
 namespace Overtrue\PackageBuilder\Commands;
 
 use Herrera\Json\Exception\FileException;
 use Herrera\Phar\Update\Manager;
 use Herrera\Phar\Update\Manifest;
 use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
+use Symfony\Component\Console\Output\OutputInterface;
 
 /**
+ * Class UpdateCommand.
+ *
  * Updates package-builder.phar to the latest version.
  *
+ * <pre>
  * ```
  * $ php package-builder.phar phar:update [-m|--major] [-p|--pre] [version]
  * ```
+ * </pre>
+ *
+ * @author overtrue <i@overtrue.me>
  */
 class UpdateCommand extends Command
 {
@@ -24,8 +39,6 @@ class UpdateCommand extends Command
 
     /**
      * Initializes this command and sets the name, description, options and arguments.
-     *
-     * @return void
      */
     protected function configure()
     {
@@ -44,20 +57,19 @@ class UpdateCommand extends Command
     /**
      * Executes the business logic involved with this command.
      *
-     * @param \Symfony\Component\Console\Input\InputInterface $input
+     * @param \Symfony\Component\Console\Input\InputInterface   $input
      * @param \Symfony\Component\Console\Output\OutputInterface $output
      *
      * @return int
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-
         $output->writeln('Looking for updates...');
-        $manager         = $this->createManager($output);
-        $version         = $input->getArgument('version')
+        $manager = $this->createManager($output);
+        $version = $input->getArgument('version')
             ? $input->getArgument('version')
             : $this->getApplication()->getVersion();
-        $allowMajor      = $input->getOption('major');
+        $allowMajor = $input->getOption('major');
         $allowPreRelease = $input->getOption('pre');
         $this->updateCurrentVersion($manager, $version, $allowMajor, $allowPreRelease, $output);
 
@@ -90,8 +102,6 @@ class UpdateCommand extends Command
      * @param bool|null       $allowMajor
      * @param bool|null       $allowPreRelease
      * @param OutputInterface $output
-     *
-     * @return void
      */
     private function updateCurrentVersion(
         Manager $manager,

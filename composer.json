@@ -1,7 +1,7 @@
 {
     "name": "overtrue/package-builder",
     "description": "A composer package builder.",
-    "keywords": ["composer", "packages", "php"],
+    "keywords": ["composer", "package", "php", "package-builder"],
     "autoload": {
         "psr-4": {
             "Overtrue\\PackageBuilder\\": "src"
@@ -21,7 +21,7 @@
     "authors": [
         {
             "name": "overtrue",
-            "email": "anzhengchao@gmail.com"
+            "email": "i@overtrue.me"
         }
     ]
 }
