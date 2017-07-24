@@ -1,6 +1,6 @@
 <h1 align="center"> Package Builder </h1>
 
-<p align="center"> A composer package builder.</p>
+<p align="center"> :package: A composer package builder.</p>
 
 
 # Install
