@@ -1,6 +1,6 @@
-# Package Builder
+<h1 align="center"> Package Builder </h1>
 
-A composer package builder.
+<p align="center"> A composer package builder.</p>
 
 
 # Install
@@ -10,8 +10,8 @@ A composer package builder.
 ```shell
 $ curl -LSs https://overtrue.me/package-builder/installer.php | php
 # as a command.
-mv package-builder.phar /usr/bin/package-builder
-chmod +x /usr/bin/package-builder
+mv package-builder.phar /usr/local/bin/package-builder
+chmod +x /usr/local/bin/package-builder
 ```
 
 2. As a Global Composer Install
