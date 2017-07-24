@@ -8,7 +8,7 @@
 1. As a Phar (Recommended)
 
 ```shell
-$ curl -LSs https://overtrue.me/package-builder/installer.php | php
+$ curl -LSs http://overtrue.me/package-builder/installer.php | php
 # as a command.
 mv package-builder.phar /usr/local/bin/package-builder
 chmod +x /usr/local/bin/package-builder
