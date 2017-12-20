@@ -272,11 +272,6 @@ class BuildCommand extends Command
      */
     protected function copyFile($file, $filename = '')
     {
-        if (is_array($filename)) {
-            $replace = $filename;
-            $filename = null;
-        }
-
         $target = $this->packageDirectory.'/'.($filename ?: $file);
         $content = str_replace(array_keys($this->info), array_values($this->info), file_get_contents($this->stubsDirectory.$file));
 
