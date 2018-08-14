@@ -3,7 +3,7 @@
 <p align="center"> :package: A composer package builder.</p>
 
 
-# Install
+# Installation
 
 
 1. As a Global Composer Install (Recommended)
