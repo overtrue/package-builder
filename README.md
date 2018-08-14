@@ -5,19 +5,20 @@
 
 # Install
 
-1. As a Phar (Recommended)
+
+1. As a Global Composer Install (Recommended)
+
+```shell
+$ composer global require 'overtrue/package-builder' --prefer-source
+```
+
+1. As a Phar
 
 ```shell
 $ curl -LSs http://overtrue.me/package-builder/installer.php | php
 # as a command.
 mv package-builder.phar /usr/local/bin/package-builder
 chmod +x /usr/local/bin/package-builder
-```
-
-2. As a Global Composer Install
-
-```shell
-$ composer global require 'overtrue/package-builder' --prefer-source
 ```
 
 # Usage
