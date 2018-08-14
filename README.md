@@ -12,7 +12,7 @@
 $ composer global require 'overtrue/package-builder' --prefer-source
 ```
 
-1. As a Phar
+2. As a Phar
 
 ```shell
 $ curl -LSs http://overtrue.me/package-builder/installer.php | php
