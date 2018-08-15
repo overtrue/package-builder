@@ -150,6 +150,8 @@ class BuildCommand extends Command
 
         $this->createPackage($config);
         $this->initComposer($config);
+
+        $output->writeln(\sprintf('<info>Package %s created in: </info><comment>%s</comment>', $this->info['PACKAGE_NAME'], $directory));
     }
 
     /**
@@ -253,7 +255,7 @@ class BuildCommand extends Command
         $author = sprintf('%s <%s>', $this->info['NAME'], $this->info['EMAIL']);
 
         exec(sprintf(
-            'composer init --name "%s" --author "%s" --description "%s" --license %s --working-dir %s',
+            'composer init --no-interaction --name "%s" --author "%s" --description "%s" --license %s --working-dir %s',
             $this->info['PACKAGE_NAME'],
             $author,
             $this->info['DESCRIPTION'] ?? 'Package description here.',
