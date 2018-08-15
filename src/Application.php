@@ -33,6 +33,5 @@ class Application extends BasicApplication
         parent::__construct($name, $version);
 
         $this->add(new BuildCommand());
-        $this->add(new UpdateCommand());
     }
 }
