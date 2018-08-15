@@ -42,7 +42,7 @@ $ package-builder build ./
 # Do you want to test this package ?[Y/n]:
 # Do you want to use php-cs-fixer format you code ? [Y/n]:
 # Please enter the standard of php-cs-fixer [symfony] ?
-# composer command...
+# Package vendor/product created in: ./
 ```
 The follow package will be created:
 
