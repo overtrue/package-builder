@@ -150,6 +150,7 @@ class BuildCommand extends Command
 
         $this->createPackage($config);
         $this->initComposer($config);
+        $this->setNamespace($config);
 
         $output->writeln(\sprintf('<info>Package %s created in: </info><comment>%s</comment>', $this->info['PACKAGE_NAME'], $directory));
     }
@@ -198,6 +199,20 @@ class BuildCommand extends Command
         }
 
         return $this->packageDirectory;
+    }
+
+    public function setNamespace(array $config)
+    {
+        $composerJson = $this->packageDirectory.'/composer.json';
+        $composer = \json_decode(\file_get_contents($composerJson));
+
+        $composer->autoload = [
+            'psr-4' => [
+                $this->info['NAMESPACE'].'\\' => 'src',
+            ],
+        ];
+
+        \file_put_contents($composerJson, \json_encode($composer, \JSON_PRETTY_PRINT|\JSON_UNESCAPED_UNICODE));
     }
 
     /**
