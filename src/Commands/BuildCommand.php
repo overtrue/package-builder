@@ -137,7 +137,7 @@ class BuildCommand extends Command
         $config['phpunit'] = $helper->ask($input, $output, $question);
 
         // phpcs?
-        $question = new ConfirmationQuestion('Do you want to use php-cs-fixer format you code ? [<fg=yellow>Y/n</fg=yellow>]:', 'yes');
+        $question = new ConfirmationQuestion('Do you want to use php-cs-fixer format your code ? [<fg=yellow>Y/n</fg=yellow>]:', 'yes');
         $config['phpcs'] = $helper->ask($input, $output, $question);
 
         if ($config['phpcs']) {
