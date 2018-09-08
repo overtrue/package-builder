@@ -29,7 +29,7 @@ $ package-builder build ./
 # Please enter the name of the package (example: foo/bar): vendor/product
 # Please enter the namespace of the package [Vendor\Product]:
 # Do you want to test this package ?[Y/n]:
-# Do you want to use php-cs-fixer format you code ? [Y/n]:
+# Do you want to use php-cs-fixer format your code ? [Y/n]:
 # Please enter the standard of php-cs-fixer [symfony] ?
 # Package vendor/product created in: ./
 ```
