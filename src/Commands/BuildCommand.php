@@ -122,7 +122,7 @@ class BuildCommand extends Command
 
         // email
         if (!empty($git['user.email'])) {
-            $question = new Question(sprintf('Author name of package [<fg=yellow>%s</fg=yellow>]: ', $git['user.email']), $git['user.email']);
+            $question = new Question(sprintf('Author email of package [<fg=yellow>%s</fg=yellow>]: ', $git['user.email']), $git['user.email']);
         } else {
             $question = new Question('Author email of package?');
         }
