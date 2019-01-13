@@ -16,7 +16,8 @@ $ composer global require 'overtrue/package-builder' --prefer-source
  $ package-builder help
 ```
 
-## create a composer package:
+## Create a composer package:
+Make sure you have `~/.composer/vendor/bin/` in your path.
 
 ```
 package-builder build [target directory]
