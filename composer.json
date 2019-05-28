@@ -7,6 +7,11 @@
             "Overtrue\\PackageBuilder\\": "src"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Overtrue\\Tests\\": "tests/"
+        }
+    },
     "require": {
         "symfony/console": "^3.0|^4.0",
         "symfony/process": "^3.0|^4.0",
