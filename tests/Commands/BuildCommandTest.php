@@ -58,11 +58,11 @@ class BuildCommandTest extends TestCase
     public function testBuildPackageWithoutTestAndPhpCsConfig()
     {
         $this->commandTester->setInputs([
-            'overtrue/package-builder', // Name of package
-            'Overtrue\\PackageBuilder\\', // Namespace of package
-            'A composer package builder.', // description
-            'overtrue', // author name
-            'i@overtrue.me', // email
+            'test/package-name', // Name of package
+            'Test\\PackageName', // Namespace of package
+            'Test description', // description
+            'test', // author name
+            'test@test.com', // email
             null, // License of package  MIT
             'n', // Do you want to test this package ?
             'n', // Do you want to use php-cs-fixer format your code ?
@@ -77,6 +77,8 @@ class BuildCommandTest extends TestCase
         $this->assertFileExists(TEST_TEMP_DIR . '/.editorconfig');
         $this->assertFileExists(TEST_TEMP_DIR . '/.gitattributes');
         $this->assertFileExists(TEST_TEMP_DIR . '/.gitignore');
+
+        $this->assertContains('test\/package-name', file_get_contents(TEST_TEMP_DIR . '/composer.json'));
     }
 
     public function clearTestTempDir()
