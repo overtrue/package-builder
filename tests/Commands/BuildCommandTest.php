@@ -1,5 +1,7 @@
 <?php
 
+namespace Overtrue\Tests\Commands;
+
 use PHPUnit\Framework\TestCase;
 use Overtrue\PackageBuilder\Application;
 use Symfony\Component\Filesystem\Filesystem;
