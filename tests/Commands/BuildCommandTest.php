@@ -77,7 +77,7 @@ class BuildCommandTest extends TestCase
             'n', // Do you want to use php-cs-fixer format your code ?
         ]);
         $this->commandTester->execute([
-            'command' => $this->command->getName(),
+            'command'   => $this->command->getName(),
             'directory' => TEST_TEMP_DIR,
         ]);
 
@@ -104,7 +104,7 @@ class BuildCommandTest extends TestCase
             'symfony', // Standard name of php-cs-fixer
         ]);
         $this->commandTester->execute([
-            'command' => $this->command->getName(),
+            'command'   => $this->command->getName(),
             'directory' => TEST_TEMP_DIR,
         ]);
 
