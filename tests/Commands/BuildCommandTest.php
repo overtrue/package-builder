@@ -81,6 +81,34 @@ class BuildCommandTest extends TestCase
         $this->assertContains('test\/package-name', file_get_contents(TEST_TEMP_DIR . '/composer.json'));
     }
 
+    public function testBuildPackageWithTestAndPhpCsConfig()
+    {
+        $this->commandTester->setInputs([
+            'test/package-name', // Name of package
+            'Test\\PackageName', // Namespace of package
+            'Test description', // description
+            'test', // author name
+            'test@test.com', // email
+            null, // License of package  MIT
+            'yes', // Do you want to test this package ?
+            'yes', // Do you want to use php-cs-fixer format your code ?
+            'symfony', // Standard name of php-cs-fixer
+        ]);
+        $this->commandTester->execute([
+            'command'   => $this->command->getName(),
+            'directory' => TEST_TEMP_DIR
+        ]);
+
+        $this->assertFileExists(TEST_TEMP_DIR . '/src/.gitkeep');
+        $this->assertFileExists(TEST_TEMP_DIR . '/tests/.gitkeep');
+        $this->assertFileExists(TEST_TEMP_DIR . '/composer.json');
+        $this->assertFileExists(TEST_TEMP_DIR . '/.editorconfig');
+        $this->assertFileExists(TEST_TEMP_DIR . '/.gitattributes');
+        $this->assertFileExists(TEST_TEMP_DIR . '/.gitignore');
+        $this->assertFileExists(TEST_TEMP_DIR . '/phpunit.xml.dist');
+        $this->assertFileExists(TEST_TEMP_DIR . '/.php_cs');
+    }
+
     public function clearTestTempDir()
     {
         $fileSystem = new Filesystem();
