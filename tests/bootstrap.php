@@ -1,3 +1,3 @@
 <?php
 
-// add some bootstrap steps here.
+define('TEST_TEMP_DIR', 'tests/Temp');
