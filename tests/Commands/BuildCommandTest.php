@@ -53,7 +53,7 @@ class BuildCommandTest extends TestCase
         $this->commandTester->execute(['command' => $this->command->getName()]);
     }
 
-    public function testNormal()
+    public function testBuildPackageWithoutTestAndPhpCsConfig()
     {
         $this->commandTester->setInputs([
             'overtrue/package-builder', // Name of package
@@ -70,7 +70,11 @@ class BuildCommandTest extends TestCase
             'directory' => TEST_TEMP_DIR
         ]);
 
-        $this->assertTrue(true);
+        $this->assertFileExists(TEST_TEMP_DIR . '/src/.gitkeep');
+        $this->assertFileExists(TEST_TEMP_DIR . '/composer.json');
+        $this->assertFileExists(TEST_TEMP_DIR . '/.editorconfig');
+        $this->assertFileExists(TEST_TEMP_DIR . '/.gitattributes');
+        $this->assertFileExists(TEST_TEMP_DIR . '/.gitignore');
     }
 
     public function clearTestTempDir()
