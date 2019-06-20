@@ -12,7 +12,6 @@
 namespace Overtrue\PackageBuilder;
 
 use Overtrue\PackageBuilder\Commands\BuildCommand;
-use Overtrue\PackageBuilder\Commands\UpdateCommand;
 use Symfony\Component\Console\Application as BasicApplication;
 
 /**
