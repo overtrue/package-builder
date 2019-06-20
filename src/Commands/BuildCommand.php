@@ -109,7 +109,7 @@ class BuildCommand extends Command
         // vendor/namespace
         $question = new Question("Namespace of package [<fg=yellow>{$defaultNamespace}</fg=yellow>]: ", $defaultNamespace);
         $this->info['NAMESPACE'] = $helper->ask($input, $output, $question);
-        $this->info['VENDOR'] = strtolower(explode('/', $this->info['PACKAGE_NAME'])[0]);
+        $this->info['VENDOR'] = strtolower(strstr($this->info['PACKAGE_NAME'], '/', true));
         $this->info['PACKAGE'] = substr($this->info['PACKAGE_NAME'], strlen($this->info['VENDOR']) + 1);
 
         // description
