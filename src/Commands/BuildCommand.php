@@ -153,6 +153,8 @@ class BuildCommand extends Command
         $this->setNamespace($config);
 
         $output->writeln(\sprintf('<info>Package %s created in: </info><comment>%s</comment>', $this->info['PACKAGE_NAME'], $directory));
+
+        return 0;
     }
 
     /**
@@ -267,10 +269,10 @@ class BuildCommand extends Command
      */
     protected function initComposer($config)
     {
-        $author = sprintf('%s <%s>', $this->info['NAME'], $this->info['EMAIL']);
+        $author = !empty($this->info['EMAIL']) ? sprintf('--author "%s <%s>"', $this->info['NAME'] ?? 'yourname', $this->info['EMAIL'] ?? 'you@example.com') : '';
 
         exec(sprintf(
-            'composer init --no-interaction --name "%s" --author "%s" --description "%s" --license %s --working-dir %s',
+            'composer init --no-interaction --name "%s" %s --description "%s" --license %s --working-dir %s',
             $this->info['PACKAGE_NAME'],
             $author,
             $this->info['DESCRIPTION'] ?? 'Package description here.',
