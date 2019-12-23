@@ -94,7 +94,7 @@ class BuildCommand extends Command
                 throw new \Exception('The package name can not be empty');
             }
 
-            if (!preg_match('/[a-z0-9\-_]+\/[a-z0-9\-_]+/', $value)) {
+            if (!preg_match('/[a-zA-Z0-9\-_]+\/[a-zA-Z0-9\-_]+/', $value)) {
                 throw new \Exception('The package name is invalid, format: vendor/product');
             }
 
