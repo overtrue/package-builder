@@ -259,7 +259,7 @@ class BuildCommand extends Command
      */
     protected function createCSFixerConfiguration()
     {
-        $this->copyFile('php_cs', '.php_cs');
+        $this->copyFile('php_cs', '.php-cs-fixer.php');
     }
 
     /**
