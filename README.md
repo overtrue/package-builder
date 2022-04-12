@@ -1,3 +1,7 @@
+> 🚨 此项目已经停止维护，建议使用以下两个模板来快捷创建项目：
+> - [overtrue/php-package](/overtrue/php-package)
+> - [overtrue/laravel-package](/laravel-package)
+
 <h1 align="center"> Package Builder </h1>
 
 <p align="center"> :package: A composer package builder.</p>
@@ -59,7 +63,7 @@ vendor-product
 $ package-builder update
 ```
 
-## :heart: Sponsor me 
+## :heart: Sponsor me
 
 [![Sponsor me](https://github.com/overtrue/overtrue/blob/master/sponsor-me.svg?raw=true)](https://github.com/sponsors/overtrue)
 
