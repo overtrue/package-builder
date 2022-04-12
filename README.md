@@ -1,6 +1,7 @@
 > 🚨 此项目已经停止维护，建议使用以下两个模板来快捷创建项目：
-> - [overtrue/php-package](/overtrue/php-package)
-> - [overtrue/laravel-package](/laravel-package)
+>
+> - [overtrue/php-package](https://github.com/overtrue/php-package)
+> - [overtrue/laravel-package](https://github.com/laravel-package)
 
 <h1 align="center"> Package Builder </h1>
 
@@ -8,26 +9,26 @@
 
 [![Sponsor me](https://github.com/overtrue/overtrue/blob/master/sponsor-me-button-s.svg?raw=true)](https://github.com/sponsors/overtrue)
 
-
 # Installation
 
-
 ```shell
-$ composer global require 'overtrue/package-builder' --prefer-source
+composer global require 'overtrue/package-builder' --prefer-source
 ```
 
 # Usage
 
 ```shell
- $ package-builder help
+ package-builder help
 ```
 
-## Create a composer package:
+## Create a composer package
+
 Make sure you have `~/.composer/vendor/bin/` in your path.
 
 ```
 package-builder build [target directory]
 ```
+
 example:
 
 ```shell
@@ -40,6 +41,7 @@ $ package-builder build ./
 # Please enter the standard of php-cs-fixer [symfony] ?
 # Package vendor/product created in: ./
 ```
+
 The follow package will be created:
 
 ```
@@ -60,7 +62,7 @@ vendor-product
 ## Update Package Builder
 
 ```shell
-$ package-builder update
+package-builder update
 ```
 
 ## :heart: Sponsor me
@@ -68,7 +70,6 @@ $ package-builder update
 [![Sponsor me](https://github.com/overtrue/overtrue/blob/master/sponsor-me.svg?raw=true)](https://github.com/sponsors/overtrue)
 
 如果你喜欢我的项目并想支持它，[点击这里 :heart:](https://github.com/sponsors/overtrue)
-
 
 ## Project supported by JetBrains
 
